@@ -21,7 +21,7 @@ public class WebRTCSignalingHandler extends TextWebSocketHandler {
         // 메시지를 JSON으로 변환
         Map<String, String> payload = objectMapper.readValue(message.getPayload(), Map.class);
         String type = payload.get("type");
-
+        System.out.println("Connection: " + type);
         // SDP 또는 ICE Candidate를 모든 클라이언트에게 전달
         for (WebSocketSession s : sessions.values()) {
             if (!s.getId().equals(session.getId())) {
